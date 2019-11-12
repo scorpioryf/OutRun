@@ -2,7 +2,11 @@
 //
 #include "pch.h"
 #include <SFML/Graphics.hpp>
-#include "MyList.h"
+#include <iostream>
+#include <sys/types.h> /* 提供类型pid_t的定义 */
+#include <time.h>
+# include<thread>
+#include <windows.h>
 using namespace sf;
 using namespace std;
 
