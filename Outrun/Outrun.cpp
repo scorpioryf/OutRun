@@ -1,6 +1,7 @@
 ﻿// Outrun.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 #include "pch.h"
+#include "MyList.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sys/types.h> /* 提供类型pid_t的定义 */
@@ -120,11 +121,11 @@ void Inilaze() {
 	app.setFramerateLimit(60);
 	for (int i = 1; i <= 10; i++)
 	{
-		ttt[i].loadFromFile("C:/Users/as/Desktop/homework/游戏制作/outrun/Outrun/Outrun/images/" + std::to_string(i) + ".png");
+		ttt[i].loadFromFile("images/" + std::to_string(i) + ".png");
 		ttt[i].setSmooth(true);
 		object[i].setTexture(ttt[i]);
 	}
-	bg.loadFromFile("C:/Users/as/Desktop/homework/游戏制作/outrun/Outrun/Outrun/images/tooopen_sy_156107161264.jpg");
+	bg.loadFromFile("images/tooopen_sy_156107161264.jpg");
 	bg.setRepeated(true);
 	sBackground.setTextureRect(IntRect(0, 0, 5000, 411));
 	sBackground.setPosition(-2000, 0);
@@ -295,7 +296,7 @@ void play() {
 			lines[startPos].SpeedUp = true;
 		}
 
-		if ((lines[startPos].barrierX - playerX <= 0.02) && bgameOver == false) {
+		if (abs(lines[startPos].barrierX - playerX) <= 0.4 && bgameOver == false) {
 			if (bInvincible == false) {
 				iHealth = iHealth - 1;
 				bInjured = true;
