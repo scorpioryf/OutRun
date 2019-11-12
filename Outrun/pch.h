@@ -8,12 +8,14 @@
 
 #ifndef PCH_H
 #define PCH_H
-#include <string>
-#include <vector>
-#include <stdlib.h>
-#include <fstream>
-#include <sstream>
+#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <sys/types.h> /* 提供类型pid_t的定义 */
+#include <time.h>
+# include<thread>
+#include <windows.h>
+#include <sstream>
+#include <fstream>
 // TODO: 添加要在此处预编译的标头
 
 #endif //PCH_H
