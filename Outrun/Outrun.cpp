@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <SFML/Graphics.hpp>
+#include "Mylist.h"
 using namespace sf;
 using namespace std;
 
