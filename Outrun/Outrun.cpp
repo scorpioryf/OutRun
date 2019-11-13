@@ -39,10 +39,14 @@ int H = 1500;
 
 RenderWindow app(VideoMode(width, height), "Outrun Racing!");
 
+MyList scoreRankingList;
+
 clock_t begin, end;
 Texture ttt[50];
+Texture ttH[50];
 Texture bg;
 Sprite object[50];
+Sprite spriteHeart[50];
 Sprite sBackground(bg);
 void drawQuad(RenderWindow &w, Color c, int x1, int y1, int w1, int x2, int y2, int w2)
 {
@@ -125,11 +129,16 @@ void Inilaze() {
 		ttt[i].setSmooth(true);
 		object[i].setTexture(ttt[i]);
 	}
+	for (int i = 1; i <= 3; i++) {
+		ttH[i].loadFromFile("images/heart0" + std::to_string(i) + ".png");
+		ttH[i].setSmooth(true);
+		spriteHeart[i].setTexture(ttH[i]);
+	}
 	bg.loadFromFile("images/tooopen_sy_156107161264.jpg");
 	bg.setRepeated(true);
 	sBackground.setTextureRect(IntRect(0, 0, 5000, 411));
 	sBackground.setPosition(-2000, 0);
-
+	scoreRankingList.loadList();
 }
 
 void restart_inilaize() {
@@ -310,6 +319,7 @@ void play() {
 				needprintH = needprintH - 2;
 			}
 		}
+		
 
 
 
@@ -347,6 +357,9 @@ void play() {
 		for (int n = startPos + 300; n > startPos; n--) {
 			if (!bgameOver) {
 				lines[n%N].drawSprite(app);
+				////draw hearts
+				app.draw(spriteHeart[iHealth / 2]);
+				
 			}
 			else
 			{
@@ -356,6 +369,9 @@ void play() {
 		app.display();
 
 		if (bgameOver == true) {
+			scoreRankingList.insert(iScore);
+			scoreRankingList.writeList();
+
 			while (1) {
 				if (circle_count == 0) {
 					cout << "再来一次：请按下Y键 " << endl;
